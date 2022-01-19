@@ -102,13 +102,6 @@ public class CircleView extends View {
                 Path path = pathMap.get(pointerId);
                 Point point = previousPointMap.get(pointerId);
 
-                //Calculate how far the user moved from the last update
-                float deltaX = Math.abs(newX - point.x);
-                float deltaY = Math.abs(newY - point.y);
-
-                // If distance is significant enough to be considered a movement then...
-                if(deltaX >= TOUCH_TOLERANCE ||
-                    deltaY >= TOUCH_TOLERANCE) {
                     //Move the path to new location
                     path.quadTo(point.x, point.y,
                             (newX + point.x)/2,
@@ -117,7 +110,7 @@ public class CircleView extends View {
                     //Store the new coordinates
                     point.x = (int) newX;
                     point.y = (int) newY;
-                }
+
             }
         }
 
