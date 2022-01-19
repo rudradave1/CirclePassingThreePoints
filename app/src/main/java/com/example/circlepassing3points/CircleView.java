@@ -113,7 +113,6 @@ public class CircleView extends View {
 
             }
         }
-
     }
 
     private void touchEnded(int pointerId) {
@@ -136,6 +135,8 @@ public class CircleView extends View {
              previousPointMap.put(pointerId, point);
          }
 
+        int mx = (int) ((x + point.x) / 2);
+        int my = (int) ((y + point.y) / 2);
         float radius = (float) Math.sqrt(Math.pow(point.x - x, 2)
                 + Math.pow(point.y - y, 2));
 
@@ -144,12 +145,10 @@ public class CircleView extends View {
          point.x = (int) x;
          point.y = (int) y;
 
-
         counter++;
         if(counter >= 3) {
-
-            bitmapCanvas.drawCircle(x/2, y/2, radius/2, paintLine);
+            counter = 0;
+            bitmapCanvas.drawCircle(mx,my, radius/2, paintLine);
         }
-
     }
 }
